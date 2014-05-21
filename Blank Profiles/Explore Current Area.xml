@@ -1,0 +1,9 @@
+<Profile>
+  <Name>Explore Current Area</Name>
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <Order>
+    <ToggleTargeting questId="1" combat="True" looting="True" />
+    <ExploreDungeon questId="1" until="FullyExplored" boxSize="45" boxTolerance="0.01" />
+  </Order>
+</Profile>
