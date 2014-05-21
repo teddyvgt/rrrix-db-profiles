@@ -1,0 +1,12 @@
+<Profile>
+  <Name>Blank Adventure Mode Profile: Combat Enabled ; Loot Enabled</Name>
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <GameParams quest="-1" step="-1" act="OpenWorld" resumeFromSave="False" isPrivate="True" numGames="-1" />
+  <Order>
+    <ToggleTargeting questId="1" combat="True" looting="True" />
+    <While condition="True">
+      <WaitTimer questId="1" waitTime="86400" />
+    </While>
+  </Order>
+</Profile>
