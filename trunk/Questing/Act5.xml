@@ -122,6 +122,10 @@
       <MoveToMapMarker questId="251355" stepId="57" x="311" y="522" z="19" markerNameHash="-352978241" actorId="374925" interactRange="20"
                        pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="308549" statusText="Cathedral Portal" />
     </If>
+    <!-- Quest: x1_WestM_IntroQuest World: x1_westm_intro LevelArea: X1_Westm_CathedralCourtyard -->
+    <If condition="IsActiveQuest(251355) and IsActiveQuestStep(57) and CurrentWorldId==306549 and CurrentLevelAreaId==311624">
+      <MoveToActor questId="251355" stepId="57" x="312" y="523" z="20"  actorId="316548" interactRange="17" name="x1_westm_Church_Ext_Door_A-21"  pathPrecision="5" pathPointLimit="250" statusText="" />
+    </If>
 
     <!-- Quest: x1_WestM_IntroQuest World: x1_westm_intro LevelArea: X1_Westm_CathedralCourtyard -->
     <!-- Search Zakarum Cathedral -->
@@ -175,13 +179,15 @@
     <!-- Quest: X1_WestmHub_Survivor_Rescue World: X1_Westmarch_Hub LevelArea: x1_Westm_Hub -->
     <!-- Go to Westmarch Commons -->
     <If condition="IsActiveQuest(284683) and IsActiveQuestStep(47) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
-      <MoveToMapMarker questId="284683" stepId="47" x="554" y="394" z="10" markerNameHash="-1359413965" actorId="176001" interactRange="20"
-                       pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="261712" statusText="Portal to Westmarch Commons" />
+      <MoveTo questId="284683" stepId="47" x="559" y="650" z="10" pathPrecision="5" />
+      <SafeMoveTo questId="284683" stepId="47" x="558" y="632" z="10" pathPrecision="5" straightLinePathing="True" />
+      <MoveToMapMarker questId="284683" stepId="47" x="558" y="632" z="12" markerNameHash="-1359413965" actorId="176001" interactRange="16.4802"
+                             pathPrecision="16" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" straightLinePathing="True" />
     </If>
     <!-- Quest: X1_WestmHub_Survivor_Rescue World: X1_Westmarch_Hub LevelArea: x1_Westm_Hub -->
     <If condition="IsActiveQuest(284683) and IsActiveQuestStep(62) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
-      <MoveToMapMarker questId="284683" stepId="62" x="554" y="394" z="10" markerNameHash="-1359413965" actorId="176001" interactRange="20"
-                       pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="261712" statusText="Portal to Westmarch Commons" />
+      <MoveToMapMarker questId="284683" stepId="47" x="558" y="632" z="12" markerNameHash="-1359413965" actorId="176001" interactRange="16.4802"
+                             pathPrecision="16" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
     </If>
     <!--
     [QuestTools] worldId changed from 304235 to 261712 - X1_WESTM_ZONE_01
@@ -284,6 +290,10 @@
       <SafeMoveTo questId="284683" stepId="60" x="287" y="280" z="0" pathPrecision="5" pathPointLimit="250" statusText="" />
       <MoveToMapMarker questId="284683" stepId="60" x="67" y="58" z="0" markerNameHash="-1426177532" actorId="176002" interactRange="20"
                       pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="338944" statusText="Briarthorn Cemetary" />
+    </If>
+    <!-- Quest: X1_WestmHub_Survivor_Rescue (284683) World: X1_Westmarch_Hub (304235) LevelArea: x1_Westm_Hub (270011) -->
+    <If condition="IsActiveQuest(284683) and IsActiveQuestStep(55) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
+      <UseWaypoint questId="284683" stepId="55" waypointNumber="2" name="Waypoint-2225" statusText="" />
     </If>
 
     <!-- Quest: X1_WestmHub_Survivor_Rescue World: x1_westm_Graveyard_DeathOrb LevelArea: X1_Westm_Graveyard_DeathOrb -->
@@ -401,8 +411,8 @@
     <!--[QuestTools] questStepId changed from -1 to 1-->
     <!-- Quest: X1_Westm_KillUrzael World: [sno unknown] LevelArea: x1_Westm_Hub -->
     <If condition="IsActiveQuest(285098) and IsActiveQuestStep(1) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
-      <MoveToMapMarker questId="285098" stepId="1" x="429" y="351" z="-2" markerNameHash="0" actorId="176001" interactRange="20"
-              pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="263494" statusText="" />
+      <MoveToMapMarker questId="285098" stepId="1" x="431" y="592" z="-2" markerNameHash="-1359413963" actorId="176001" interactRange="16.51981"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
     </If>
 
     <!-- Quest: X1_Westm_KillUrzael World: X1_Westmarch_Hub LevelArea: x1_Westm_Hub -->
@@ -486,8 +496,8 @@
 
     <!-- Quest: x1_Adria World: [sno unknown] LevelArea: x1_Westm_Hub -->
     <If condition="IsActiveQuest(257120) and IsActiveQuestStep(67) and CurrentWorldId==304235">
-      <MoveToActor questId="257120" stepId="67" x="430" y="666" z="6" actorId="176001" interactRange="20"
-                 pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="282460" statusText="" />
+      <MoveToMapMarker questId="257120" stepId="67" x="435" y="919" z="-1" markerNameHash="1232608241" actorId="176001" interactRange="24.65643"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
     </If>
     <!-- Quest: x1_Adria World: x1_Bog_AdriaRitual LevelArea: x1_Bog_AdriaRitual -->
     <While condition="IsActiveQuest(257120) and IsActiveQuestStep(67) and CurrentWorldId==2824607">
@@ -739,7 +749,7 @@
       <MoveToMapMarker questId="257120" stepId="10" markerNameHash="1943159982" actorId="341572" interactRange="20"
                        pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="0" statusText="" />
     </If>
-    
+
     <!-- Quest: x1_Adria World: x1_Catacombs_Level02 LevelArea: x1_Catacombs_Level02 -->
     <If condition="IsActiveQuest(257120) and IsActiveQuestStep(10) and CurrentWorldId==283566 and CurrentLevelAreaId==283567">
       <MoveToMapMarker questId="257120" stepId="10" markerNameHash="-131340091" actorId="293005" interactRange="20"
@@ -822,8 +832,12 @@
 
     <!-- Quest: x1_ToHeaven World: X1_Westmarch_Hub LevelArea: x1_Westm_Hub -->
     <If condition="IsActiveQuest(263851) and IsActiveQuestStep(15) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
-      <MoveToMapMarker questId="263851" stepId="15" x="368" y="509" z="7" markerNameHash="0" actorId="277401" interactRange="20"
-                        pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="339160" statusText="" />
+      <MoveToMapMarker questId="263851" stepId="15" x="374" y="755" z="7" markerNameHash="-352978241" actorId="277401" interactRange="9.013878"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
+    </If>
+    <!-- Quest: x1_ToHeaven World: X1_Westmarch_Hub LevelArea: x1_Westm_Hub -->
+    <If condition="IsActiveQuest(263851) and IsActiveQuestStep(15) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
+      <MoveToActor questId="263851" stepId="15" x="374" y="755" z="7"  actorId="277401" interactRange="10" name="x1_Heaven_PandemoniumPortal-553"  isPortal="True" destinationWorldId="-1" pathPrecision="5" pathPointLimit="250" statusText="" />
     </If>
     <!-- Quest: x1_ToHeaven World: x1_Heaven_Pandemonium_Portal LevelArea: x1_Heaven_Pandemonium_Portal -->
     <If condition="IsActiveQuest(263851) and IsActiveQuestStep(15) and CurrentWorldId==339160 and CurrentLevelAreaId==339468">
@@ -834,7 +848,7 @@
     <!-- Quest: x1_ToHeaven World: x1_Heaven_Pandemonium_Portal LevelArea: x1_Heaven_Pandemonium_Portal -->
     <If condition="IsActiveQuest(263851) and IsActiveQuestStep(17) and CurrentWorldId==339160 and CurrentLevelAreaId==339468">
       <SafeMoveTo questId="263851" stepId="17" x="421" y="421" z="0" pathPrecision="5" pathPointLimit="250" statusText="" />
-      <WaitTimer questId="263851" stepId="17" waitTime="500" />
+      <WaitTimer questId="263851" stepId="17" waitTime="5000" />
     </If>
     <!-- Quest: x1_ToHeaven World: x1_Heaven_Pandemonium_Portal LevelArea: x1_Heaven_Pandemonium_Portal -->
     <If condition="IsActiveQuest(263851) and IsActiveQuestStep(19) and CurrentWorldId==339160 and CurrentLevelAreaId==339468">
@@ -857,6 +871,7 @@
     <If condition="IsActiveQuest(273790) and IsActiveQuestStep(35) and CurrentWorldId==339160 and CurrentLevelAreaId==339468">
       <MoveToMapMarker questId="273790" stepId="35" x="392" y="389" z="-15" markerNameHash="607983116" actorId="343991" interactRange="20"
                       pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="291941" statusText="" />
+      <WaitTimer questId="273790" stepId="35" waitTime="5000" />
     </If>
 
 
@@ -1147,7 +1162,7 @@
     </If>
     <!-- Quest: x1_Fortress_KillMalthael World: X1_fortress_malthael_entrance LevelArea: X1_fortress_malthael_entrance -->
     <If condition="IsActiveQuest(273408) and IsActiveQuestStep(8) and CurrentWorldId==346410 and CurrentLevelAreaId==349787">
-      <TrinityTownRun questId="273408" stepId="8" minFreeBagSlots="6" minDurabilityPercent="50" /> 
+      <TrinityTownRun questId="273408" stepId="8" minFreeBagSlots="6" minDurabilityPercent="50" />
       <SafeMoveTo questId="273408" stepId="8" x="430" y="423" z="-24" pathPrecision="5" pathPointLimit="250" statusText="" />
       <MoveToMapMarker questId="273408" stepId="8" markerNameHash="-144918420" actorId="374257" interactRange="25"
                       pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="328484" statusText="Portal to Maltheael" />

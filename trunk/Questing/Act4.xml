@@ -384,7 +384,7 @@
     </If>
     <If condition="IsActiveQuest(114901) and IsActiveQuestStep(24) and CurrentWorldId == 121579">
       <!-- The Silver Spire Level 1 -->
-      <TrinityExploreDungeon questId="114901" stepId="24" until="ObjectFound" actorId="225195" boxTolerance="0.45" boxSize="25">
+      <TrinityExploreDungeon questId="114901" stepId="24" until="ExitFound" exitNameHash="1038619951" boxTolerance="0.45" boxSize="25">
         <PrioritizeScenes>
           <PriorityScene sceneName="Exit" />
         </PrioritizeScenes>
@@ -396,7 +396,9 @@
         </IgnoreScenes>
       </TrinityExploreDungeon>
       <!-- The Great Span -->
-      <MoveToActor questId="114901" stepId="24" actorId="225195" isPortal="True" destinationWorldId="214956" interactRange="20" />
+      <!-- Quest: Heaven_CorruptedArch (114901) World: a4dun_Spire_Level_01 (121579) LevelArea: A4_dun_Spire_01 (109538) -->
+      <MoveToMapMarker questId="114901" stepId="24" markerNameHash="1038619951" actorId="225195" interactRange="14.75969"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
       <WaitTimer questId="114901" stepId="24" waitTime="1000" />
     </If>
     <If condition="IsActiveQuest(114901) and IsActiveQuestStep(24) and CurrentWorldId == 214956">

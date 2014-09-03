@@ -1454,6 +1454,11 @@
       <WaitTimer questId="72546" stepId="47" waitTime="1000" />
     </While>
     <ToggleTargeting questId="72546" stepId="29" looting="True" lootRadius="300" combat="True" combatRadius="300" />
+
+    <If condition="IsActiveQuest(72546) and IsActiveQuestStep(29) and CurrentLevelAreaId == 19947">
+      <UseWaypoint questId="72546" stepId="29" waypointNumber="11" name="Highlands Crossing" statusText="" />
+    </If>
+    
     <If condition="IsActiveQuest(72546) and IsActiveQuestStep(29) 
       and ActorExistsAt(ZetaDia.Me.ActorSNO, 2231,4948,20,100) and (CurrentLevelAreaId == 93632 or CurrentLevelAreaId == 19940)">
       <ToggleTargeting questId="72546" stepId="29" looting="True" lootRadius="90" />
@@ -1960,6 +1965,10 @@
       <SafeMoveTo questId="72801" stepId="39" name="Kill the Cultists" pathPrecision="10" x="339" y="81" z="-24" />
       <!-- Kill the Cultists -->
       <WaitTimer questId="72801" stepId="39" waitTime="65000" />
+    </If>
+    <!-- Talk to the Stranger, Resume Handling -->
+    <If condition="IsActiveQuest(72801) and IsActiveQuestStep(11) and CurrentWorldId == 78839">
+      <MoveToActor questId="72801" stepId="11" actorId="175999" isPortal="True" destinationWorldId="135713" x="41" y="40" z="0" />
     </If>
     <If condition="IsActiveQuest(72801) and IsActiveQuestStep(11) and CurrentWorldId == 135713">
       <!-- Talk to Tyrael -->
