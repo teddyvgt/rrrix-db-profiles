@@ -37,20 +37,21 @@
     </While>
 
     <!-- ActorSNO=345935 is the Rift Portal in Town -->
-    <While condition="Me.IsInTown and not (ActorExistsAt(345935, 606, 510, 2, 50))">
+    <While condition="Me.IsInTown and not (ActorExistsAt(345935, 606, 750, 2, 50))">
       <!-- Clear some backpack space, we're going item huntin' -->
       <TrinityTownRun minFreeBagSlots="40"/>
       <!-- Interact with Pylon to open the Rift -->
       <LogMessage output="Using Rift Portal" />
-      <MoveToActor questId="1" actorId="364715" interactRange="11" name="x1_OpenWorld_LootRunObelisk_B-596" x="606" y="510" z="2" pathPrecision="5" pathPointLimit="250" isPortal="True"/>
+      <OpenRift questId="1" startTiered="False" />
+      <!--<MoveToActor questId="1" actorId="364715" interactRange="11" name="x1_OpenWorld_LootRunObelisk_B-596" x="606" y="510" z="2" pathPrecision="5" pathPointLimit="250" isPortal="True"/>-->
       <WaitTimer questId="1" waitTime="5000" />
     </While>
 
     
-    <While condition="Me.IsInTown and ActorExistsAt(345935, 606, 510, 2, 50) ">
+    <While condition="Me.IsInTown and ActorExistsAt(345935, 606, 750, 2, 50) ">
       <!-- Enter the Rift -->
       <LogMessage questId="337492" stepId="1" output="Entering the Rift" />
-      <MoveToActor questId="337492" stepId="1" actorId="345935" interactRange="9" name="X1_OpenWorld_LootRunPortal-1589" x="606" y="510" z="2" isPortal="True" pathPrecision="5" pathPointLimit="250"/>
+      <MoveToActor questId="337492" stepId="1" actorId="345935" interactRange="9" name="X1_OpenWorld_LootRunPortal-1589" x="606" y="750" z="2" isPortal="True" pathPrecision="5" pathPointLimit="250"/>
       <WaitTimer questId="337492" stepId="1" waitTime="3000" />
     </While>
 
@@ -58,18 +59,23 @@
       LevelArea: X1_LR_Tileset_Fortress, Id: 333758    
       LevelArea: X1_LR_Tileset_SpiderCaves, Id: 322727
       LevelArea: X1_LR_Tileset_CraterTowers, Id: 342477
+      LevelArea: X1_LR_Tileset_RootCave, Id: 276128
+      LevelArea: X1_LR_Tileset_FloodedCave, Id: 276212
       -->
-    <While condition="HasQuest(337492) and not Me.IsInTown and (CurrentLevelAreaId == 333758 or CurrentLevelAreaId == 322727 or CurrentLevelAreaId == 342477)">
+    <While condition="HasQuest(337492) and not Me.IsInTown and (
+           CurrentLevelAreaId == 333758 or 
+           CurrentLevelAreaId == 322727 or 
+           CurrentLevelAreaId == 342477 or 
+           CurrentLevelAreaId == 276128 or
+           CurrentLevelAreaId == 276212
+           )">
       <!-- Wait for quest to start-->
       <WaitTimer questId="337492" stepId="1" waitTime="5000" />
       <!--<LogMessage questId="337492" stepId="1" output="Exloring the Rift" />-->
       <!-- Special Handling for tight maps -->
-      <TrinityExploreDungeon questId="337492" stepId="1" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45"
-                             timeoutType="Timer" timeoutValue="600" townPortalOnTimeout="True">
+      <TrinityExploreDungeon questId="337492" stepId="1" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45">
         <PriorityScenes>
           <PriorityScene sceneName="Exit" />
-          <PriorityScene sceneName="Entrance" />
-          <PriorityScene sceneName="Portal" />
         </PriorityScenes>
       </TrinityExploreDungeon>
       <LogMessage questId="337492" stepId="1" output="Rift Explored" />
@@ -81,6 +87,9 @@
       <WaitTimer questId="337492" stepId="3" waitTime="5000" />
       <!-- Boss Found, re-explore if needed -->
       <TrinityExploreDungeon questId="337492" stepId="3" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45" />
+      <!-- Move to POI if needed -->
+      <MoveToObjective questId="337492" stepId="3" />
+
       <TrinityTownPortal questId="337492" stepId="10" waitTime="5000" />
     </While>
 
@@ -90,12 +99,9 @@
     <While condition="HasQuest(337492) and not Me.IsInTown and (CurrentLevelAreaId != 333758 or CurrentLevelAreaId != 322727)">
       <WaitTimer questId="337492" stepId="1" waitTime="5000" />
       <!--<LogMessage questId="337492" stepId="1" output="Exloring the Rift" />-->
-      <TrinityExploreDungeon questId="337492" stepId="1" until="RiftComplete" pathPrecision="30" boxSize="60" boxTolerance="0.01" markerDistance="30"
-                             timeoutType="Timer" timeoutValue="600" townPortalOnTimeout="True">
+      <TrinityExploreDungeon questId="337492" stepId="1" until="RiftComplete" pathPrecision="30" boxSize="45" boxTolerance="0.01" markerDistance="30">
         <PriorityScenes>
           <PriorityScene sceneName="Exit" />
-          <PriorityScene sceneName="Entrance" />
-          <PriorityScene sceneName="Portal" />
         </PriorityScenes>
       </TrinityExploreDungeon>
       <LogMessage questId="337492" stepId="1" output="Rift Explored" />
@@ -108,6 +114,9 @@
       <WaitTimer questId="337492" stepId="3" waitTime="5000" />
       <!-- Boss Found, re-explore if needed -->
       <TrinityExploreDungeon questId="337492" stepId="3" until="RiftComplete" pathPrecision="30" boxSize="35" boxTolerance="0.01" markerDistance="45" />
+      <!-- Move to POI if needed -->
+      <MoveToObjective questId="337492" stepId="3" />
+      
       <TrinityTownPortal questId="337492" stepId="10" waitTime="5000" />
     </While>
 
@@ -118,10 +127,15 @@
     <If condition="Me.IsInTown">
       <ResumeUseTownPortal questId="337492" stepId="1" />
 
-      <MoveToActor questId="337492" stepId="10" x="588" y="518" z="3"  actorId="363744" interactRange="9" name="X1_LR_Nephalem-21212"  pathPrecision="5" pathPointLimit="250" statusText="" />
-      <LeaveGame questId="337492" stepId="-1" reason="Run is done" />
+      <MoveToActor questId="337492" stepId="10" x="828" y="518" z="3"  actorId="363744" interactRange="9" name="X1_LR_Nephalem-21212"  pathPrecision="5" pathPointLimit="250" statusText="" />
+
+      <!-- Leave Game Option -->
+      <!--<LeaveGame questId="337492" stepId="-1" reason="Run is done" />-->
+      
+      <!-- Wait 30 sec, then re-recreate! -->
+      <WaitTimer questId="1" waitTime="31000" />
+      <LeaveGame reason="Run is done" />
     </If>
 
-    <ReloadProfile />
   </Order>
 </Profile>
