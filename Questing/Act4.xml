@@ -295,7 +295,10 @@
     <If condition="IsActiveQuest(113910) and IsActiveQuestStep(60) and CurrentWorldId == 109530">
       <WaitTimer questId="113910" stepId="60" waitTime="20000" />
       <!-- Use Auriel's portal to Gardens of Hope 2nd Tier -->
-      <MoveToActor questId="113910" stepId="60" actorId="204901" isPortal="True" destinationWorldId="219659" />
+      <!-- Quest: Heaven_RestorationOfHope (113910) World: a4dun_Hell_Portal_02 (109530) LevelArea: A4_dun_Hell_Portal_02 (109531) -->
+      <MoveToMapMarker questId="113910" stepId="60" markerNameHash="-1524911733" actorId="204901" interactRange="8.316568"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
+      <!--<MoveToActor questId="113910" stepId="60" actorId="204901" isPortal="True" destinationWorldId="219659" />-->
       <WaitTimer questId="113910" stepId="60" waitTime="1000" />
     </If>
     <If condition="IsActiveQuest(113910) and IsActiveQuestStep(56) and CurrentWorldId == 219659">
