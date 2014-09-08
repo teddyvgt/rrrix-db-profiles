@@ -197,6 +197,13 @@
     [QuestTools] Change(s) occured at Position x="779" y="385" z="10"
     -->
 
+    <!-- Quest: X1_WestmHub_Survivor_Rescue (284683) World: X1_Westmarch_Hub (304235) LevelArea: x1_Westm_Hub (270011) -->
+    <If condition="IsActiveQuest(284683) and IsActiveQuestStep(62) and CurrentWorldId==304235 and CurrentLevelAreaId==270011">
+      <MoveToMapMarker questId="284683" stepId="62" x="558" y="632" z="12" markerNameHash="-1359413965" actorId="176001" interactRange="16.4802"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
+    </If>
+
+
     <!-- Quest: X1_WestmHub_Survivor_Rescue World: X1_WESTM_ZONE_01 LevelArea: X1_WESTM_ZONE_01 -->
     <!-- Location: Westmarch Commons -->
     <!-- Major Quest Objective: Find the Soul Crucible -->
@@ -950,6 +957,17 @@
       <MoveToMapMarker questId="273790" stepId="45" markerNameHash="235765865" actorId="277401" interactRange="20"
                   pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="339254" statusText="" />
     </If>
+    
+    
+    <!-- Quest: X1_PandExt_ExteriorFull World: X1_Pand_Ext_BatteringRam_Entrance_A LevelArea: X1_Pand_Ext_BatteringRam_Entrance_A -->
+    <If condition="IsActiveQuest(273790) and IsActiveQuestStep(30) and CurrentWorldId==339254 and CurrentLevelAreaId==339397">
+      <SafeMoveTo questId="273790" stepId="30" x="404" y="183" z="-51" pathPrecision="5" pathPointLimit="250" statusText="" />
+    </If>
+    <!-- Quest: X1_PandExt_ExteriorFull World: X1_Pand_Ext_BatteringRam_Entrance_A LevelArea: X1_Pand_Ext_BatteringRam_Entrance_A -->
+    <If condition="IsActiveQuest(273790) and IsActiveQuestStep(30) and CurrentWorldId==339254 and CurrentLevelAreaId==339397">
+      <MoveToActor questId="273790" stepId="30" x="393" y="148" z="-51" actorId="290323" interactRange="8" name="X1_Tyrael_PandExt-62537"  pathPrecision="5" pathPointLimit="250" statusText="" />
+    </If>
+
 
     <!-- Quest: X1_PandExt_ExteriorFull World: X1_Pand_Ext_BatteringRam_Entrance_A LevelArea: X1_Pand_Ext_BatteringRam_Entrance_A -->
     <If condition="IsActiveQuest(273790) and IsActiveQuestStep(45) and CurrentWorldId==339254 and CurrentLevelAreaId==339397">
