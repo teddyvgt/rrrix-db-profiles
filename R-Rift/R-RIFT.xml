@@ -43,7 +43,8 @@
                    exitWithConversation="True" exitWithVendorWindow="True"/>
       <MoveToActor questId="405695" stepId="9" x="594" y="764" z="3"  actorId="363744" interactRange="9" name="X1_LR_Nephalem"  pathPrecision="5" pathPointLimit="250" statusText=""
                    exitWithConversation="True" exitWithVendorWindow="True"/>
-      <WaitTimer questId="1" waitTime="30000" />
+      <TownRun questId="1" minFreeBagSlots="60" minDurabilityPercent="100" />
+      <WaitTimer questId="1" waitTime="25000" />
     </If>
 
     <!-- In Town, Rift Portal Open, Take Return Portal -->
@@ -56,7 +57,7 @@
     <!-- ActorSNO=345935 is the Rift Portal in Town -->
     <While condition="Me.IsInTown and not (ActorExistsAt(345935, 606, 750, 2, 50)) and not IsActiveQuestAndStep(405695,9) and not IsActiveQuestAndStep(337492,10)">
       <!-- Clear some backpack space, we're going item huntin' -->
-      <TownRun minFreeBagSlots="60" minDurabilityPercent="100" />
+      <TownRun questId="1" minFreeBagSlots="60" minDurabilityPercent="100" />
 
       <!-- Waypoint to A5 Hub if in town but not A5 Hub-->
       <While condition="Me.IsInTown and CurrentLevelAreaId != 270011 and not IsActiveQuestAndStep(405695,9) and not IsActiveQuestAndStep(337492,10)">
@@ -65,8 +66,8 @@
       </While>
 
       <!-- Grab some Keys if needed -->
-      <GetItemFromStash questId="1" greaterRiftKey="True" />
-      <GetItemFromStash questId="1" stackCount="5" actorId="323722" />
+      <GetItemFromStash questId="1" greaterRiftKey="True" stackCount="1" />
+      <GetItemFromStash questId="1" stackCount="1" actorId="323722" />
 
       <HasNoRiftKeys>
         <LogMessage output="No Rift Keys Found! Cannot Rift without some Rift Keys. Run some bounties, yo!" />
@@ -183,6 +184,8 @@
 
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon questId="337492" stepId="3" routeMode="SceneTSP" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45" />
+      <!-- Move to Exit if haven't found boss on this map and exit is visible -->
+      <MoveToMapMarker questId="337492" stepId="3" isPortal="True" destinationWorldId="-1"  />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon questId="337492" stepId="16" routeMode="SceneTSP" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45" />
       <!-- Move to POI if needed -->
@@ -245,6 +248,8 @@
       <WaitTimer questId="337492" stepId="3" waitTime="1000" />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon routeMode="SceneTSP" questId="337492" stepId="3" until="RiftComplete" pathPrecision="30" boxSize="35" boxTolerance="0.01" markerDistance="45" />
+      <!-- Move to Exit if haven't found boss on this map and exit is visible -->
+      <MoveToMapMarker questId="337492" stepId="3" isPortal="True" destinationWorldId="-1"  />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon questId="337492" stepId="16" routeMode="SceneTSP" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45" />
       <MoveToMapMarker questId="337492" stepId="16" isPortal="True" destinationWorldId="-1"  />
@@ -281,6 +286,8 @@
       <WaitTimer questId="337492" stepId="3" waitTime="1000" />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon routeMode="SceneTSP" questId="337492" stepId="3" until="RiftComplete" pathPrecision="30" boxSize="35" boxTolerance="0.01" markerDistance="45" />
+      <!-- Move to Exit if haven't found boss on this map and exit is visible -->
+      <MoveToMapMarker questId="337492" stepId="3" isPortal="True" destinationWorldId="-1"  />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon questId="337492" stepId="16" routeMode="SceneTSP" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45" />
       <MoveToMapMarker questId="337492" stepId="16" isPortal="True" destinationWorldId="-1"  />
@@ -343,6 +350,8 @@
       <WaitTimer questId="337492" stepId="3" waitTime="5000" />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon routeMode="SceneTSP" questId="337492" stepId="3" until="RiftComplete" pathPrecision="30" boxSize="35" boxTolerance="0.01" markerDistance="45" />
+      <!-- Move to Exit if haven't found boss on this map and exit is visible -->
+      <MoveToMapMarker questId="337492" stepId="3" isPortal="True" destinationWorldId="-1"  />
       <!-- Boss Found, re-explore if needed -->
       <ExploreDungeon questId="337492" stepId="16" routeMode="SceneTSP" until="RiftComplete" pathPrecision="30" boxSize="15" boxTolerance="0.01" markerDistance="45" />
       <MoveToMapMarker questId="337492" stepId="16" isPortal="True" destinationWorldId="-1"  />
@@ -369,18 +378,18 @@
 
     <TrinityTownPortal questId="337492" stepId="10" waitTime="5000" />
 
-    <If condition="Me.IsInTown and not IsActiveQuestAndStep(405695,9)">
-      <ResumeUseTownPortal questId="337492" stepId="1" />
+    <If condition="Me.IsInTown and ((not IsActiveQuestAndStep(405695,9)) or IsActiveQuestAndStep(337492,10))">
       <!-- Speak to Orek -->
       <MoveToActor questId="337492" stepId="10" x="594" y="764" z="3" actorId="363744" interactRange="9" name="X1_LR_Nephalem-21212"  pathPrecision="5" pathPointLimit="250" statusText=""
                    exitWithConversation="True" exitWithVendorWindow="True"/>
+
       <!-- Leave Game Option -->
       <!--<LeaveGame questId="337492" stepId="-1" reason="Run is done" />-->
 
-      <HasNoRiftKeys>
-        <!-- Wait 30 sec, then re-recreate! -->
-        <WaitTimer questId="1" waitTime="31000" />
-      </HasNoRiftKeys>
+      <TownRun minFreeBagSlots="60" minDurabilityPercent="100" />
+
+      <!-- Wait 30 sec, then re-recreate! -->
+      <WaitTimer questId="1" waitTime="27000" />
     </If>
     <LogMessage output="End of Profile, waiting 5 seconds to reload..." />
     <WaitTimer questId="1" waitTime="5000" />
