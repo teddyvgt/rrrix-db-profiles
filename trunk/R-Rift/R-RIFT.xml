@@ -15,6 +15,8 @@
   <Order>
     <ToggleTargeting questId="1"  combat="True" looting="True" lootRadius="100" killRadius="80" />
 
+    <CombatSetting questId="1" trashPackSize="3" trashPackClusterRadius="30" monEliteRange="65" />
+    
     <If condition="not (Me.IsInTown) and not (
         CurrentWorldId == 288454 or 
         CurrentWorldId == 288685 or 
@@ -44,7 +46,7 @@
       <MoveToActor questId="405695" stepId="9" x="594" y="764" z="3"  actorId="363744" interactRange="9" name="X1_LR_Nephalem"  pathPrecision="5" pathPointLimit="250" statusText=""
                    exitWithConversation="True" exitWithVendorWindow="True"/>
       <TownRun questId="1" minFreeBagSlots="60" minDurabilityPercent="100" />
-      <WaitTimer questId="1" waitTime="25000" />
+      <!--<WaitTimer questId="1" waitTime="25000" />-->
     </If>
 
     <!-- In Town, Rift Portal Open, Take Return Portal -->
@@ -67,41 +69,21 @@
 
       <!-- Grab some Keys if needed -->
       <GetItemFromStash questId="1" greaterRiftKey="True" stackCount="1" />
-      <GetItemFromStash questId="1" stackCount="1" actorId="323722" />
+      <GetItemFromStash questId="1" stackCount="1" actorId="408416" name="Keystone of Trials" />
+      <GetItemFromStash questId="1" stackCount="1" actorId="323722" name="Rift Keystone Fragment" />
 
       <HasNoRiftKeys>
         <LogMessage output="No Rift Keys Found! Cannot Rift without some Rift Keys. Run some bounties, yo!" />
       </HasNoRiftKeys>
 
-      <TownRun questId="1" minFreeBagSlots="59" minDurability="90" />
       <LogMessage output="Triggering QTOpenRiftWrapper... " />
       <QTOpenRiftWrapper questId="1" />
 
     </While>
 
 
-    <!-- Tiered Rifts: Trial -->
-    <!-- LevelArea: p1_TieredRift_Challenge, Id: 405915 -->
-    <While condition="CurrentLevelAreaId == 405915 and IsActiveQuest(405695)">
-      <WaitTimer questId="405695" stepId="13" waitTime="1000" />
-
-      <SafeMoveTo questId="405695" stepId="1" x="280" y="278" z="-11" pathPrecision="5" pathPointLimit="250" statusText="" />
-      <WaitTimer questId="405695" stepId="1" waitTime="1000" />
-
-      <SafeMoveTo questId="405695" stepId="9" x="272" y="256" z="-11" pathPrecision="5" pathPointLimit="250" statusText="" />
-      <MoveToActor questId="405695" stepId="9" actorId="406207" interactRange="9"
-                      name="p1_g_Portal_TieredRiftChallenge-63667"  isPortal="True" destinationWorldId="-1" pathPrecision="5" pathPointLimit="250" statusText="" />
-      <WaitTimer questId="405695" stepId="9" waitTime="500" />
-    </While>
-
-    <!-- Complete the Greater Rift, Talk to Urshi -->
-    <While condition="CurrentLevelAreaId == 332339 and IsActiveQuestAndStep(405695,9)">
-      <MoveToActor questId="405695" stepId="9" x="392" y="593" z="24"  actorId="363744" interactRange="5"
-                   name="X1_LR_Nephalem-64310"  pathPrecision="5" pathPointLimit="250" statusText="" />
-    </While>
-
-
     <While condition="Me.IsInTown and IsActiveQuest(337492) and ActorExistsAt(345935, 606, 750, 2, 50) and not IsActiveQuestAndStep(337492,10)">
+      <WaitTimer waitTime="500" />
       <!-- Enter the Rift -->
       <LogMessage questId="337492" stepId="1" output="Entering the Rift" />
       <MoveToActor questId="337492" stepId="1" actorId="345935" interactRange="9" name="X1_OpenWorld_LootRunPortal-1589" x="606" y="750" z="2"
@@ -110,6 +92,36 @@
                    isPortal="True" pathPrecision="5" pathPointLimit="250"/>
       <WaitTimer questId="337492" stepId="1" waitTime="500" />
     </While>
+
+    <While condition="Me.IsInTown and IsActiveQuest(405695)">
+      <!-- [202EF0F0] GizmoType: Portal Name: X1_OpenWorld_Tiered_Rifts_Challenge_Portal-4167 ActorSNO: 408511 Distance: 8.081734 Position: <606.84, 750.39, 2.53> Barracade: False Radius: 8.316568 -->
+      <MoveToActor questId="405695" stepId="1" actorId="408511" name="X1_OpenWorld_Tiered_Rifts_Challenge_Portal" x="606" y="750" z="2" isPortal="True" interactRange="9" />
+      <MoveToActor questId="405695" stepId="9" actorId="408511" name="X1_OpenWorld_Tiered_Rifts_Challenge_Portal" x="606" y="750" z="2" isPortal="True" interactRange="9" />
+    </While>
+    
+    <!-- Greater Rift portal : [202EBD3C] GizmoType: Portal Name: X1_OpenWorld_Tiered_Rifts_Portal-5041 ActorSNO: 396751 Distance: 11.58544 Position: <606.84, 750.39, 2.53> Barracade: False Radius: 8.316568-->
+    
+    <!-- Tiered Rifts: Trial -->
+    <!-- LevelArea: p1_TieredRift_Challenge, Id: 405915 -->
+    <While condition="CurrentLevelAreaId == 405915 and IsActiveQuest(405695)">
+      <WaitTimer questId="405695" stepId="13" waitTime="1000" />
+
+      <SafeMoveTo questId="405695" stepId="1" x="280" y="278" z="-11" pathPrecision="5" pathPointLimit="250" statusText="" />
+      <WaitTimer questId="405695" stepId="1" waitTime="1000" />
+
+      <TownPortal questId="405695" stepId="9" />
+      <!--<SafeMoveTo questId="405695" stepId="9" x="272" y="256" z="-11" pathPrecision="5" pathPointLimit="250" statusText="" />
+      <MoveToActor questId="405695" stepId="9" actorId="406207" interactRange="9"
+                      name="p1_g_Portal_TieredRiftChallenge-63667"  isPortal="True" destinationWorldId="-1" pathPrecision="5" pathPointLimit="250" statusText="" />
+      <WaitTimer questId="405695" stepId="9" waitTime="500" />-->
+    </While>
+
+    <!-- Complete the Greater Rift, Talk to Urshi -->
+    <While condition="CurrentLevelAreaId == 332339 and IsActiveQuestAndStep(405695,9)">
+      <MoveToActor questId="405695" stepId="9" x="392" y="593" z="24"  actorId="363744" interactRange="5"
+                   name="X1_LR_Nephalem-64310"  pathPrecision="5" pathPointLimit="250" statusText="" />
+    </While>
+
 
 
     <!--
@@ -241,7 +253,7 @@
 
       <LogMessage questId="337492" stepId="13" output="Rift Explored" />
 
-      <!-- Move to the Portal Exit if found and still on Rift Quest -->
+      <!-- Move to the Portal Exit if found and still on Rift345935  Quest -->
       <MoveToMapMarker questId="337492" stepId="1" isPortal="True" destinationWorldId="-1"  />
       <MoveToMapMarker questId="337492" stepId="13" isPortal="True" destinationWorldId="-1"  />
 
@@ -323,7 +335,6 @@
       <ExploreDungeon questId="337492" stepId="1" routeMode="WeightedNearestMinimapVisited" until="RiftComplete" pathPrecision="30" boxSize="45" boxTolerance="0.01" markerDistance="30">
         <PriorityScenes>
           <PriorityScene sceneName="Exit" />
-          <PriorityScene sceneName="AqueductEntranceA" />
         </PriorityScenes>
       </ExploreDungeon>
 
@@ -334,7 +345,6 @@
                              until="RiftComplete" pathPrecision="30" boxSize="40" boxTolerance="0.01" markerDistance="30">
         <PriorityScenes>
           <PriorityScene sceneName="Exit" />
-          <PriorityScene sceneName="AqueductEntranceA" />
         </PriorityScenes>
       </ExploreDungeon>
 
@@ -362,7 +372,7 @@
     </While>
 
     <While condition="IsActiveQuestAndStep(337492,34) and not Me.IsInTown and (CurrentLevelAreaId != 333758 or CurrentLevelAreaId != 322727)">
-      <!-- Greter Rifts -->
+      <!-- Greater Rifts -->
       <!-- Find Urshi -->
       <ExploreDungeon questId="337492" stepId="34" routeMode="NearestUnvisited" until="ObjectFound" ignoreMarkers="True"
                              objectDistance="75"
@@ -378,7 +388,7 @@
 
     <TrinityTownPortal questId="337492" stepId="10" waitTime="5000" />
 
-    <If condition="Me.IsInTown and ((not IsActiveQuestAndStep(405695,9)) or IsActiveQuestAndStep(337492,10))">
+    <If condition="Me.IsInTown and IsActiveQuestAndStep(337492,10)">
       <!-- Speak to Orek -->
       <MoveToActor questId="337492" stepId="10" x="594" y="764" z="3" actorId="363744" interactRange="9" name="X1_LR_Nephalem-21212"  pathPrecision="5" pathPointLimit="250" statusText=""
                    exitWithConversation="True" exitWithVendorWindow="True"/>
@@ -389,7 +399,7 @@
       <TownRun minFreeBagSlots="60" minDurabilityPercent="100" />
 
       <!-- Wait 30 sec, then re-recreate! -->
-      <WaitTimer questId="1" waitTime="27000" />
+      <!--<WaitTimer questId="1" waitTime="27000" />-->
     </If>
     <LogMessage output="End of Profile, waiting 5 seconds to reload..." />
     <WaitTimer questId="1" waitTime="5000" />
