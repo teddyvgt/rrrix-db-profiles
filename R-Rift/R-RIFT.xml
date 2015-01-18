@@ -82,7 +82,7 @@
     </While>
 
 
-    <While condition="Me.IsInTown and IsActiveQuest(337492) and ActorExistsAt(345935, 606, 750, 2, 50) and not IsActiveQuestAndStep(337492,10)">
+    <While condition="Me.IsInTown and (IsActiveQuestAndStep(337492, 1) or IsActiveQuestAndStep(337492, 3)) and ActorExistsAt(345935, 606, 750, 2, 50) and not IsActiveQuestAndStep(337492,10)">
       <WaitTimer waitTime="500" />
       <!-- Enter the Rift -->
       <LogMessage questId="337492" stepId="1" output="Entering the Rift" />
@@ -93,7 +93,8 @@
       <WaitTimer questId="337492" stepId="1" waitTime="500" />
     </While>
 
-    <While condition="Me.IsInTown and IsActiveQuest(405695)">
+    <While condition="Me.IsInTown and (IsActiveQuestAndStep(405695,1) or IsActiveQuestAndStep(405695,9))">
+      <LogMessage questId="337492" stepId="1" output="Entering Trial Rift" />
       <!-- [202EF0F0] GizmoType: Portal Name: X1_OpenWorld_Tiered_Rifts_Challenge_Portal-4167 ActorSNO: 408511 Distance: 8.081734 Position: <606.84, 750.39, 2.53> Barracade: False Radius: 8.316568 -->
       <MoveToActor questId="405695" stepId="1" actorId="408511" name="X1_OpenWorld_Tiered_Rifts_Challenge_Portal" x="606" y="750" z="2" isPortal="True" interactRange="9" />
       <MoveToActor questId="405695" stepId="9" actorId="408511" name="X1_OpenWorld_Tiered_Rifts_Challenge_Portal" x="606" y="750" z="2" isPortal="True" interactRange="9" />

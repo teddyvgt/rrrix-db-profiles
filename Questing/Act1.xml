@@ -118,7 +118,7 @@
     </If>
     <If condition="IsActiveQuest(87700) and IsActiveQuestStep(60) and  CurrentWorldId == 71150">
       <ToggleTargeting questId="1" combat="True" killRadius="90" looting="True" lootRadius="300" />
-      <!-- The bot gets stuck running here and idk why, click to the right a little and it will continue -->
+
       <SafeMoveTo questId="87700" stepId="60" x="2794" y="2925" z="24" />
       <!-- Kill the Wretched Mother -->
       <WaitTimer questId="87700" stepId="60" waitTime="213000" />
@@ -142,7 +142,7 @@
 
     <If condition="IsActiveQuest(87700) and IsActiveQuestStep(27) and  CurrentWorldId == 71150">
       <TrinityUseOnce id="200">
-        <SafeMoveTo name="Damp Cellar" questId="87700" stepId="27" x="2366" y="2738" z="27"  />
+        <SafeMoveTo name="Damp Cellar" questId="87700" stepId="27" x="2292" y="2563" z="27"  />
         <!-- Check for Damp Cellar - RNG #2 -->
         <MoveToActor questId="87700" stepId="27" x="2292" y="2563" z="27" actorId="176007" interactRange="10" maxSearchDistance="50" isPortal="True" destinationWorldId="106752" />
       </TrinityUseOnce>
@@ -200,10 +200,10 @@
 
 
     <!-- The Legacy of Cain -->
-    <If condition="IsActiveQuest(72095) and IsActiveQuestStep(-1) and CurrentWorldId == 71150">
+    <If condition="IsActiveQuest(72095) and IsActiveQuestStep(-1) and CurrentLevelAreaId == 71150">
       <!-- The Legacy of Cain -->
       <!-- Pickup the quest from Leah -->
-      <LogMessage questId="1" output="Pickup the quest from Leah" />
+      <LogMessage questId="72095" stepId="-1" output="Pickup the quest from Leah" />
       <MoveToActor questId="72095" stepId="-1" x="2948" y="2803" z="24" actorId="4580" />
       <WaitTimer questId="72095" stepId="-1" waitTime="1000" />
     </If>
@@ -365,12 +365,12 @@
     <!-- 72221 -->
     <!-- A Shattered Crown -->
     <!-- Talk to Cain -->
-    <While condition="IsActiveQuest(72221) and IsActiveQuestStep(-1) and CurrentWorldId == 71150 and Me.IsInTown">
+    <While condition="IsActiveQuestAndStep(72221, -1) and CurrentLevelAreaId == 19947">
       <MoveToActor questId="72221" stepId="-1" actorId="3533" x="1477" y="2847" z="58" />
       <WaitTimer questId="72221" stepId="-1" waitTime="5000"  />
     </While>
     <!-- Talk to Haedrig Eamon -->
-    <While condition="IsActiveQuest(72221) and IsActiveQuestStep(41) and CurrentWorldId == 71150 and Me.IsInTown">
+    <While condition="IsActiveQuestAndStep(72221, 44) and CurrentLevelAreaId == 19947">
       <MoveToActor questId="72221" stepId="41" actorId="65036" x="2938" y="2616" z="1" />
       <WaitTimer waitTime="1000" stepId="41" />
     </While>
@@ -568,6 +568,7 @@
     <If condition="IsActiveQuest(72061) and IsActiveQuestStep(-1) and CurrentWorldId == 71150">
       <!-- Reign of the Black King -->
       <!-- Talk to Deckard Cain -->
+      <LogMessage questId="72061" stepId="-1" output="Talk to Deckard Cain" />
       <SafeMoveTo questId="72061" stepId="-1" x="2955" y="2840" z="24" pathPrecision="2" pathPointLimit="250" statusText="" />
       <MoveToActor questId="72061" stepId="-1" actorId="3533" x="2948" y="2798" z="24" />
       <WaitTimer questId="72061" stepId="-1" waitTime="25000" />
@@ -582,25 +583,31 @@
       <MoveToActor questId="72061" stepId="28" actorId="176002" isPortal="True" destinationWorldId="60713" x="2980" y="2833" z="24" />
       <WaitTimer questId="72061" stepId="28" waitTime="3000" />
     </If>
-    <If condition="IsActiveQuest(72061) and IsActiveQuestStep(3) and CurrentWorldId == 60713">
+    <If condition="IsActiveQuestAndStep(72061, 3) and CurrentWorldId == 60713">
       <!-- Use Ornate Door -->
+      <LogMessage questId="72061" stepId="3" output="Using ornate door" />
       <SafeMoveTo questId="72061" stepId="3" actorId="156058" x="14" y="226" z="-24" />
       <MoveToActor questId="72061" stepId="3" actorId="156058" x="14" y="226" z="-24" timeout="10" />
     </If>
-    <If condition="IsActiveQuest(72061) and IsActiveQuestStep(3) and CurrentWorldId == 60713">
-      <WaitTimer questId="72061" stepId="3" waitTime="7000" />
+    <While condition="IsActiveQuestAndStep(72061, 3) and CurrentWorldId == 60713">
+      <WaitTimer questId="72061" stepId="3" waitTime="9000" />
       <!-- Enter the Ornate Door: Go to Cathedral Level 2 -->
+      <LogMessage questId="72061" stepId="3" output="Entering Cathedral Level 2" />
       <MoveToActor questId="72061" stepId="3" actorId="176001" isPortal="True" destinationWorldId="50582" x="6" y="225" z="-24" />
       <WaitTimer questId="72061" stepId="3" waitTime="1000" />
-    </If>
-    <!-- Ornate door death handling... I think? Not sure why i wrote this. -->
-    <If condition="IsActiveQuest(72061) and IsActiveQuestStep(6) and CurrentWorldId == 60713">
+    </While>
+    <!-- Ornate door death handling... -->
+    <If condition="IsActiveQuestAndStep(72061, 6) and CurrentWorldId == 60713">
+      <LogMessage questId="72061" stepId="6" output="Entering Cathedral Level 2" />
       <MoveToActor questId="72061" stepId="6" actorId="176001" isPortal="True" destinationWorldId="50582" x="6" y="225" z="-24" />
       <WaitTimer questId="72061" stepId="6" waitTime="1000" />
     </If>
+    <If condition="IsActiveQuestAndStep(72061, 3) and CurrentWorldId == 50582">
+      <WaitTimer questId="72061" stepId="3" waitTime="1000" />
+    </If>
     <!-- Cathedral Level 2 -->
-    <If condition="IsActiveQuest(72061) and IsActiveQuestStep(6) and CurrentWorldId == 50582">
-      <!-- Generated -->
+    <If condition="IsActiveQuestAndStep(72061, 6) and CurrentWorldId == 50582">
+      <LogMessage questId="72061" stepId="6" output="Exploring Level 2" />
       <TrinityExploreDungeon  questId="72061" stepId="6" boxSize="30" boxTolerance="0.10" until="ExitFound" exitNameHash="1016504366">
         <PrioritizeScenes>
           <PriorityScene sceneName="Exit" />
@@ -798,7 +805,7 @@
 
       <SafeMoveTo questId="72061" stepId="66" name="Skeleton King Crypt Door" pathPrecision="10" x="343" y="481" z="0"/>
     </If>
-    <If condition="IsActiveQuest(72061) and IsActiveQuestStep(16) and CurrentWorldId == 50585">
+    <While condition="IsActiveQuest(72061) and IsActiveQuestStep(16) and CurrentWorldId == 50585">
       <!-- Open Onate Door to Skeleton King Tomb -->
       <!-- Door to Portal -->
       <MoveToActor questId="72061" stepId="16" actorId="5944" x="343" y="481" z="0" endAnimation="trDun_SkeletonKIng_Sealed_Door_Open"  />
@@ -806,7 +813,7 @@
       <!-- Portal to Skeleton King Tomb -->
       <MoveToActor questId="72061" stepId="16" actorId="159573" isPortal="True" destinationWorldId="73261" x="343" y="481" z="0" />
       <WaitTimer questId="72061" stepId="16" waitTime="15000" />
-    </If>
+    </While>
     <If condition="IsActiveQuest(72061) and IsActiveQuestStep(16) and CurrentWorldId == 73261">
       <WaitTimer questId="72061" stepId="16" waitTime="10000" />
     </If>
@@ -1016,15 +1023,14 @@
       <WaitTimer questId="72738" stepId="86" waitTime="2500" />
     </If>
     <!-- Help Scoundrel -->
-    <If condition="IsActiveQuest(72738) and IsActiveQuestStep(86) and CurrentWorldId == 71150 and (not ZetaDia.Me.IsInTown)">
+    <While condition="IsActiveQuest(72738) and IsActiveQuestStep(86) and CurrentWorldId == 71150 and (not ZetaDia.Me.IsInTown)">
       <SafeMoveTo questId="72738" stepId="86" actorId="80812" x="1545" y="857" z="37" />
       <MoveToActor questId="72738" stepId="86" actorId="80812" x="1545" y="857" z="37" />
       <WaitTimer questId="72738" stepId="86" waitTime="8000" />
-    </If>
+    </While>
     <While condition="IsActiveQuest(72738) and IsActiveQuestStep(88) and CurrentWorldId == 71150">
       <!-- Talk to Brigand -->
       <MoveToActor questId="72738" stepId="88" actorId="177539" x="1486" y="823" z="40" interactAttempts="8" />
-
     </While>
     <While condition="IsActiveQuest(72738) and IsActiveQuestStep(90) and CurrentWorldId == 71150">
       <MoveToActor questId="72738" stepId="90" actorId="177539" x="1486" y="823" z="40" />
@@ -1085,20 +1091,29 @@
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and ZetaDia.Me.IsInTown">
       <UseWaypoint questId="72738" stepId="12" actorId="223757" waypointNumber="8" x="2981" y="2836" z="24" />
     </If>
-    <!-- Step 12 has 2 tasks - or I have 2 steps at once... I dunno! -->
+
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 71150">
       <!-- Find Crypt of the Ancients #1 -->
-      <MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="576" y="881" z="20" maxSearchDistance="50" />
+      <!-- 976523525 -->
+      <!-- Quest: Nephalem_Power (72738) World: trOUT_Town (71150) LevelArea: A1_trOut_TristramFields_B (19953) -->
+      <MoveToMapMarker questId="72738" stepId="12" x="576" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60394" statusText="" />
+      <!--<MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="576" y="881" z="20" maxSearchDistance="50" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="1000" />
     </If>
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 71150">
       <!-- Find Crypt of the Ancients #2 -->
-      <MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="320" y="876" z="15" maxSearchDistance="50" />
+      <!-- Quest: Nephalem_Power (72738) World: trOUT_Town (71150) LevelArea: A1_trOut_TristramFields_B (19953) -->
+      <MoveToMapMarker questId="72738" stepId="12" x="308" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60394" statusText="" />
+      <!--<MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="320" y="876" z="15" maxSearchDistance="50" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="1000" />
     </If>
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 71150">
       <!-- Find Crypt of the Ancients #3 -->
-      <MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="445" y="880" z="18" maxSearchDistance="50"  />
+      <MoveToMapMarker questId="72738" stepId="12" x="445" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191"
+                            pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60394" statusText="" />
+      <!--<MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="445" y="880" z="18" maxSearchDistance="50"  />-->
       <WaitTimer questId="72738" stepId="12" waitTime="1000" />
     </If>
 
@@ -1142,26 +1157,32 @@
 
     <!--  Warriors Rest #1 -->
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentLevelAreaId == 19953">
-      <LogMessage quest="72738" step="12" output="- - - Looking for Warriors Rest Location #1" />
-      <SafeMoveTo  quest="72738" step="12" x="404" y="678" z="15" />
-      <MoveToActor quest="72738" step="12" x="404" y="678" z="15" actorId="176008"  isPortal="True" destinationWorldId="60393"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #1" />
-      <WaitTimer quest="72738" step="12" waitTime="2000" />
+      <LogMessage questId="72738" stepId="12" output="- - - Looking for Warriors Rest Location #1" />
+      <SafeMoveTo  questId="72738" stepId="12" x="404" y="678" z="15" />
+      <MoveToMapMarker questId="72738" stepId="12" x="404" y="678" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814"
+                            pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60393" statusText="" />
+      <!--<MoveToActor questId="72738" stepId="12" x="404" y="678" z="15" actorId="176008"  isPortal="True" destinationWorldId="60393"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #1" />-->
+      <WaitTimer questId="72738" stepId="12" waitTime="2000" />
     </If>
 
     <!-- Warrior's Rest #2 -->
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentLevelAreaId == 19953">
-      <LogMessage quest="1" step="1" output="- - - Looking for Warriors Rest Location #2" />
-      <SafeMoveTo  quest="72738" step="12" x="522" y="665" z="15" />
-      <MoveToActor quest="72738" step="12" x="522" y="665" z="15" actorId="176008" isPortal="True" destinationWorldId="60393"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #2" />
-      <WaitTimer quest="72738" step="12" waitTime="2000" />
+      <LogMessage questId="72738" stepId="12" output="- - - Looking for Warriors Rest Location #2" />
+      <SafeMoveTo  questId="72738" stepId="12" x="522" y="665" z="15" />
+      <MoveToMapMarker questId="72738" stepId="12" x="523" y="665" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814"
+                            pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60393" statusText="" />
+      <!--<MoveToActor questId="72738" stepId="12" x="522" y="665" z="15" actorId="176008" isPortal="True" destinationWorldId="60393"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #2" />-->
+      <WaitTimer questId="72738" stepId="12" waitTime="2000" />
     </If>
 
     <!-- Warrior's Rest #3 -->
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentLevelAreaId == 19953">
-      <LogMessage quest="1" step="1" output="- - - Looking for Warriors Rest Location #3" />
-      <SafeMoveTo  quest="72738" step="12" x="282" y="665" z="15" />
-      <MoveToActor quest="72738" step="12" x="282" y="665" z="15" actorId="176008" destinationWorldId="60393" isPortal="True"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #3" />
-      <WaitTimer quest="72738" step="12" waitTime="2000" />
+      <LogMessage questId="72738" stepId="12" output="- - - Looking for Warriors Rest Location #3" />
+      <SafeMoveTo  questId="72738" stepId="12" x="282" y="665" z="15" />
+      <MoveToMapMarker questId="72738" stepId="12" x="282" y="665" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814"
+                          pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60393" statusText="" />
+      <!--<MoveToActor questId="72738" stepId="12" x="282" y="665" z="15" actorId="176008" destinationWorldId="60393" isPortal="True"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #3" />-->
+      <WaitTimer questId="72738" stepId="12" waitTime="2000" />
     </If>
     <!-- We're in Warrior's Rest -->
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 60393">
@@ -1255,27 +1276,35 @@
       <TrinityTownPortal questId="73236" stepId="-1" />
       <WaitTimer questId="73236" stepId="-1" waitTime="1000" />
     </If>
+
+    <!-- The Doom in Wortham -->
+    <While condition="IsActiveQuest(73236) and IsActiveQuestStep(-1) and CurrentWorldId == 71150">
+      <MoveToActor questId="73236" stepId="-1" actorId="117365" x="2943" y="2791" z="24" />
+      <!-- Talk to The Stranger -->
+      <WaitTimer questId="73236" stepId="-1" waitTime="100" />
+      <!-- sell / repair / stash while we're here -->
+    </While>
+    
     <!-- Somehow we're in the Drowned Temple Still ? -->
     <If condition="IsActiveQuest(73236) and IsActiveQuestStep(34) and CurrentWorldId == 60395">
       <SafeMoveTo questId="73236" stepId="34" x="240" y="248" z="-76" timeout="30" />
       <TrinityTownPortal questId="73236" stepId="34" />
       <WaitTimer questId="73236" stepId="34" waitTime="1000" />
     </If>
-
+    
+    <While condition="IsActiveQuest(73236) and IsActiveQuestStep(24) and CurrentWorldId == 71150">
+      <MoveToActor questId="73236" stepId="24" actorId="117365" x="2943" y="2791" z="24" />
+      <!-- Talk to The Stranger -->
+      <WaitTimer questId="73236" stepId="24" waitTime="100" />
+      <!-- sell / repair / stash while we're here -->
+    </While>
+    
     <If condition="IsActiveQuest(73236) and IsActiveQuestStep(34) and CurrentWorldId == 71150">
       <SafeMoveTo questId="73236" stepId="34" actorId="153019" x="3128" y="2599" z="1" />
       <!-- Talk to the Ferryman -->
       <MoveToActor questId="73236" stepId="34" actorId="153019" x="3128" y="2599" z="1" />
       <WaitTimer questId="73236" stepId="34" waitTime="1000" />
     </If>
-    <!-- The Doom in Wortham -->
-    <While condition="IsActiveQuest(73236) and IsActiveQuestStep(-1) and CurrentWorldId == 71150">
-      <MoveToActor questId="73236" stepId="-1" actorId="117365" x="2943" y="2791" z="24" />
-      <!-- Talk to The Stranger -->
-      <WaitTimer questId="73236" stepId="-1" waitTime="1000" />
-      <!-- sell / repair / stash while we're here -->
-    </While>
-
 
     <!-- WE ARE NOW IN WORTHAM -->
 
@@ -1986,20 +2015,20 @@
       <!-- Find the Stranger -->
       <WaitTimer questId="72801" stepId="41" waitTime="1000" />
     </If>
-    <If condition="IsActiveQuest(72801) and IsActiveQuestStep(39) and CurrentWorldId == 135713">
+    <While condition="IsActiveQuest(72801) and IsActiveQuestStep(39) and CurrentWorldId == 135713">
       <SafeMoveTo questId="72801" stepId="39" name="Kill the Cultists" pathPrecision="10" x="339" y="81" z="-24" />
       <!-- Kill the Cultists -->
       <WaitTimer questId="72801" stepId="39" waitTime="65000" />
-    </If>
+    </While>
     <!-- Talk to the Stranger, Resume Handling -->
     <If condition="IsActiveQuest(72801) and IsActiveQuestStep(11) and CurrentWorldId == 78839">
       <MoveToActor questId="72801" stepId="11" actorId="175999" isPortal="True" destinationWorldId="135713" x="41" y="40" z="0" />
     </If>
-    <If condition="IsActiveQuest(72801) and IsActiveQuestStep(11) and CurrentWorldId == 135713">
+    <While condition="IsActiveQuest(72801) and IsActiveQuestStep(11) and CurrentWorldId == 135713">
       <!-- Talk to Tyrael -->
       <MoveToActor questId="72801" stepId="11" actorId="183117" x="339" y="81" z="-24" />
-      <WaitTimer questId="72801" stepId="11" waitTime="60000" />
-    </If>
+      <WaitTimer questId="72801" stepId="11" waitTime="100" />
+    </While>
 
 
     <!-- 136656 -->
@@ -2021,6 +2050,9 @@
     </If>
 
     <While condition="IsActiveQuest(136656) and IsActiveQuestStep(8) and CurrentWorldId == 71150">
+      <MoveToActor questId="136656" stepId="8" actorId="177544" x="2952" y="2851" z="23" />
+      <ConfirmOK  questId="136656" stepId="8" />
+      <WaitTimer questId="136656" stepId="8" waitTime="500" />
       <MoveToActor questId="136656" stepId="8" actorId="177544" x="2952" y="2851" z="23" />
       <ConfirmOK  questId="136656" stepId="8" />
       <!-- Talk to the Caravan Leader -->
