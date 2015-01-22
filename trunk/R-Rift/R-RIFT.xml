@@ -107,6 +107,9 @@
     <While condition="CurrentLevelAreaId == 405915 and IsActiveQuest(405695)">
       <WaitTimer questId="405695" stepId="13" waitTime="1000" />
 
+      <!-- Bottom of the map -->
+      <SafeMoveTo questId="312429" stepId="2" x="327" y="334" z="-11" pathPrecision="5" pathPointLimit="250" />      
+      <!-- Center of the map -->
       <SafeMoveTo questId="405695" stepId="1" x="280" y="278" z="-11" pathPrecision="5" pathPointLimit="250" statusText="" />
       <WaitTimer questId="405695" stepId="1" waitTime="1000" />
 
@@ -122,8 +125,6 @@
       <MoveToActor questId="405695" stepId="9" x="392" y="593" z="24"  actorId="363744" interactRange="5"
                    name="X1_LR_Nephalem-64310"  pathPrecision="5" pathPointLimit="250" statusText="" />
     </While>
-
-
 
     <!--
       LevelArea: X1_LR_Tileset_Fortress, Id: 333758    
