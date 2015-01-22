@@ -370,7 +370,7 @@
       <WaitTimer questId="72221" stepId="-1" waitTime="5000"  />
     </While>
     <!-- Talk to Haedrig Eamon -->
-    <While condition="IsActiveQuestAndStep(72221, 44) and CurrentLevelAreaId == 19947">
+    <While condition="IsActiveQuestAndStep(72221, 41) and CurrentLevelAreaId == 19947">
       <MoveToActor questId="72221" stepId="41" actorId="65036" x="2938" y="2616" z="1" />
       <WaitTimer waitTime="1000" stepId="41" />
     </While>
