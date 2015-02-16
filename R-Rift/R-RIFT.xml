@@ -51,8 +51,9 @@
 
     <!-- In Town, Rift Portal Open, Take Return Portal -->
     <!-- Quest: X1_LR_DungeonFinder (337492) World: X1_Westmarch_Hub (304235) LevelArea: x1_Westm_Hub (270011) -->
-    <If condition="IsActiveQuestAndStep(337492,13) and Me.IsInTown and ActorExistsAt(191492, 545, 753, 3, 50)">
-      <MoveToActor questId="337492" stepId="13" x="545" y="753" z="3"  actorId="191492" interactRange="9" name="hearthPortal"  isPortal="True"
+    <If condition="(IsActiveQuestAndStep(337492,13) or IsActiveQuestAndStep(337492,1)) and Me.IsInTown and ActorExistsAt(191492, 545, 753, 3, 50)">
+      <LogMessage output="Taking Hearth Portal" />
+      <MoveToActor questId="1" x="545" y="753" z="3"  actorId="191492" interactRange="9" name="hearthPortal-36157"  isPortal="True" 
                    destinationWorldId="-1" pathPrecision="5" pathPointLimit="250" statusText="" />
     </If>
 
