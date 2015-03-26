@@ -44,6 +44,8 @@
     <ToggleTargeting questId="1" combat="True" killRadius="90" looting="True" lootRadius="300" />
     <QuestToolsSetVariable questId="1" key="DebugLogging" value="True" />
 
+    <SetQuesting questId="1" mode="true" />
+    
     <WaitTimer waitTime="1000" />
     <If condition="ZetaDia.CurrentActSNOId == 70016">
       <LogMessage message="We're in the wrong act, loading Act 2" />

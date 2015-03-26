@@ -11,7 +11,7 @@
     <LogMessage message="Loaded Act 5 by rrrix" />
     <ToggleTargeting questId="1" combat="True" killRadius="90" looting="True" lootRadius="300" />
     <QuestToolsSetVariable questId="1" key="DebugLogging" value="True" />
-
+    <SetQuesting questId="1" mode="true" />
 
     <If condition="ZetaDia.CurrentActSNOId == 70015">
       <LogMessage message="We're in the wrong act, loading Act 1" />
