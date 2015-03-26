@@ -14,9 +14,7 @@
 
   <Order>
     <ToggleTargeting questId="1"  combat="True" looting="True" lootRadius="100" killRadius="80" />
-
-    <CombatSetting questId="1" trashPackSize="3" trashPackClusterRadius="30" monEliteRange="65" />
-    
+   
     <If condition="not (Me.IsInTown) and not (
         CurrentWorldId == 288454 or 
         CurrentWorldId == 288685 or 

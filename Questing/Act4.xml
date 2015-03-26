@@ -208,6 +208,8 @@
     <If condition="IsActiveQuest(113910) and IsActiveQuestStep(44) and CurrentWorldId == 109513">
       <!-- Gardens of Hope 1st Tier -->
       <!-- Hell Rift -->
+      <!-- Quest: Heaven_RestorationOfHope (113910) World: a4dun_Garden_of_Hope_01 (109513) LevelArea: A4_dun_Garden_of_Hope_01 (109514) -->
+      <ExploreDungeon questId="113910" stepId="44" until="ExitFound" exitNameHash="984446736" actorId="224890" pathPrecision="45" boxSize="60" boxTolerance="0.01" objectDistance="45"/>
       <MoveToMapMarker questId="113910" stepId="44" actorId="224890" isPortal="True" destinationWorldId="109525" markerNameHash="984446736" />
       <WaitTimer questId="113910" stepId="44" waitTime="1000" />
     </If>

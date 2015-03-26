@@ -1096,7 +1096,8 @@
       <!-- Find Crypt of the Ancients #1 -->
       <!-- 976523525 -->
       <!-- Quest: Nephalem_Power (72738) World: trOUT_Town (71150) LevelArea: A1_trOut_TristramFields_B (19953) -->
-      <MoveToMapMarker questId="72738" stepId="12" x="576" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191"
+      <LogMessage output="Finding Crypt of the Ancients #1" />
+      <MoveToMapMarker questId="72738" stepId="12" x="576" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191" maxSearchDistance="500"
                              pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60394" statusText="" />
       <!--<MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="576" y="881" z="20" maxSearchDistance="50" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="1000" />
@@ -1104,20 +1105,23 @@
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 71150">
       <!-- Find Crypt of the Ancients #2 -->
       <!-- Quest: Nephalem_Power (72738) World: trOUT_Town (71150) LevelArea: A1_trOut_TristramFields_B (19953) -->
-      <MoveToMapMarker questId="72738" stepId="12" x="308" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191"
+      <LogMessage output="Finding Crypt of the Ancients #2" />
+      <MoveToMapMarker questId="72738" stepId="12" x="308" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191" maxSearchDistance="500"
                              pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60394" statusText="" />
       <!--<MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="320" y="876" z="15" maxSearchDistance="50" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="1000" />
     </If>
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 71150">
       <!-- Find Crypt of the Ancients #3 -->
-      <MoveToMapMarker questId="72738" stepId="12" x="445" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191"
+      <LogMessage output="Finding Crypt of the Ancients #3" />
+      <MoveToMapMarker questId="72738" stepId="12" x="445" y="881" z="17" markerNameHash="976523526" actorId="176008" interactRange="9.173191" maxSearchDistance="500"
                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60394" statusText="" />
       <!--<MoveToActor questId="72738" stepId="12" actorId="176008" isPortal="True" destinationWorldId="60394" x="445" y="880" z="18" maxSearchDistance="50"  />-->
       <WaitTimer questId="72738" stepId="12" waitTime="1000" />
     </If>
 
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentWorldId == 60394">
+      <LogMessage output="Inside Crypt of the Ancients" />
       <!-- If we're in Crypt of the Ancients -->
       <SafeMoveTo questId="72738" stepId="12" x="147" y="339" z="-14"/>
       <!-- Beacon of Light -->
@@ -1159,7 +1163,8 @@
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentLevelAreaId == 19953">
       <LogMessage questId="72738" stepId="12" output="- - - Looking for Warriors Rest Location #1" />
       <SafeMoveTo  questId="72738" stepId="12" x="404" y="678" z="15" />
-      <MoveToMapMarker questId="72738" stepId="12" x="404" y="678" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814"
+      
+      <MoveToMapMarker questId="72738" stepId="12" x="404" y="678" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814" maxSearchDistance="500"
                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60393" statusText="" />
       <!--<MoveToActor questId="72738" stepId="12" x="404" y="678" z="15" actorId="176008"  isPortal="True" destinationWorldId="60393"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #1" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="2000" />
@@ -1169,7 +1174,7 @@
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentLevelAreaId == 19953">
       <LogMessage questId="72738" stepId="12" output="- - - Looking for Warriors Rest Location #2" />
       <SafeMoveTo  questId="72738" stepId="12" x="522" y="665" z="15" />
-      <MoveToMapMarker questId="72738" stepId="12" x="523" y="665" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814"
+      <MoveToMapMarker questId="72738" stepId="12" x="523" y="665" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814" maxSearchDistance="500"
                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60393" statusText="" />
       <!--<MoveToActor questId="72738" stepId="12" x="522" y="665" z="15" actorId="176008" isPortal="True" destinationWorldId="60393"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #2" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="2000" />
@@ -1179,7 +1184,7 @@
     <If condition="IsActiveQuest(72738) and IsActiveQuestStep(12) and CurrentLevelAreaId == 19953">
       <LogMessage questId="72738" stepId="12" output="- - - Looking for Warriors Rest Location #3" />
       <SafeMoveTo  questId="72738" stepId="12" x="282" y="665" z="15" />
-      <MoveToMapMarker questId="72738" stepId="12" x="282" y="665" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814"
+      <MoveToMapMarker questId="72738" stepId="12" x="282" y="665" z="16" markerNameHash="976523525" actorId="176008" interactRange="10.5814" maxSearchDistance="500"
                           pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="60393" statusText="" />
       <!--<MoveToActor questId="72738" stepId="12" x="282" y="665" z="15" actorId="176008" destinationWorldId="60393" isPortal="True"  maxSearchDistance="50" statusText="Checking Warriors Rest Location #3" />-->
       <WaitTimer questId="72738" stepId="12" waitTime="2000" />
