@@ -34,7 +34,7 @@
     <!-- Waypoint to A5 Hub if in town but not A5 Hub-->
     <While condition="Me.IsInTown and CurrentLevelAreaId != 270011">
       <LogMessage output="Using Waypoint to Act 5 Hub" />
-      <UseWaypoint questId="312429" stepId="2" waypointNumber="46" name="Waypoint-397" statusText="" />
+      <UseWaypoint questId="312429" stepId="2" waypointNumber="48" name="Waypoint-397" statusText="" />
     </While>
 
     <If condition="(IsActiveQuestAndStep(337492,10) or IsActiveQuestAndStep(405695,9)) and Me.IsInTown">
@@ -63,7 +63,7 @@
       <!-- Waypoint to A5 Hub if in town but not A5 Hub-->
       <While condition="Me.IsInTown and CurrentLevelAreaId != 270011 and not IsActiveQuestAndStep(405695,9) and not IsActiveQuestAndStep(337492,10)">
         <LogMessage output="Using Waypoint to Act 5 Hub" />
-        <UseWaypoint questId="312429" stepId="2" waypointNumber="46" name="Waypoint-397" statusText="" />
+        <UseWaypoint questId="312429" stepId="2" waypointNumber="48" name="Waypoint-397" statusText="" />
       </While>
 
       <!-- Grab some Keys if needed -->
