@@ -8,7 +8,7 @@
   <!-- ([xyz]=")(\d+)(\.\d+)(") -->
   <!-- \1\2\4 -->
   <TargetBlacklists>
-
+    <TargetBlacklist actorId="117344" name="a3dun_rmpt_Demon_Elevator_A" />
     <TargetBlacklist actorId="153752" />
     <TargetBlacklist actorId="177040" />
     <TargetBlacklist actorId="155128" />
@@ -60,7 +60,7 @@
 
     <!-- Diablo 1.0.7 resume game handling -->
     <If condition="Me.IsInTown">
-      <ResumeUseTownPortal force="False" timeLimit="30" />
+      <ResumeUseTownPortal forceUsePortal="true" timeLimit="30" />
     </If>
 
     <If condition="IsActiveQuest(93595) and IsActiveQuestStep(-1) and CurrentWorldId == 204707">
@@ -69,6 +69,10 @@
       <!-- TalkTo Tyrael -->
       <WaitTimer questId="93595" stepId="-1" waitTime="1000" />
       <!-- Watchtower -->
+    </If>
+    <!-- Quest: KillTheBeast (93595) World: a3dun_Hub_Adria_Tower_Intro (204707) LevelArea: a3dun_hub_AdriaTower_Intro_01 (206142) -->
+    <If condition="IsActiveQuest(93595) and IsActiveQuestStep(8) and CurrentWorldId==204707 and CurrentLevelAreaId==206142">
+      <UseTownPortal questId="93595" stepId="8" />
     </If>
     <If condition="IsActiveQuest(93595) and IsActiveQuestStep(8) and CurrentWorldId == 204707">
 
@@ -760,6 +764,10 @@
       <WaitTimer questId="101750" stepId="-1" waitTime="1000" />
 
     </If>
+    <!-- Quest: TraverseBridge (101750) World: a3dun_hub_keep (172909) LevelArea: A3_Dun_Keep_Hub (92945) -->
+    <If condition="IsActiveQuest(101750) and IsActiveQuestStep(1) and CurrentWorldId==172909 and CurrentLevelAreaId==92945">
+      <MoveToActor questId="101750" stepId="1" actorId="191492" interactRange="9" name="hearthPortal-524"  isPortal="True" destinationWorldId="-1" pathPrecision="5" pathPointLimit="250" statusText="" />
+    </If>
     <If condition="IsActiveQuest(101750)  and IsActiveQuestStep(1) and CurrentWorldId == 95804 and MarkerExistsAt(-443762283, Me.Position.X, Me.Position.Y, Me.Position.Z, 300)">
       <UsePortal questId="101750" stepId="1" destinationWorldId="226713" portalMarkerHash="-443762283" />
       <WaitTimer questId="101750" stepId="1" waitTime="5000" />
@@ -830,6 +838,12 @@
     <If condition="IsActiveQuest(101758) and IsActiveQuestStep(10)  and CurrentWorldId == 79401">
       <WaitTimer questId="101758" stepId="10" waitTime="2000" />
     </If>
+
+    <!-- Quest: KillAzmodan (101758) World: [sno unknown] (172909) LevelArea: A3_Dun_Keep_Hub (92945) -->
+    <If condition="IsActiveQuest(101758) and IsActiveQuestStep(41) and CurrentWorldId==172909 and CurrentLevelAreaId==92945">
+      <MoveToActor questId="101758" stepId="41" x="374" y="417" z="1"  actorId="191492" interactRange="9" name="hearthPortal-491"  isPortal="True" destinationWorldId="-1" pathPrecision="5" pathPointLimit="250" statusText="" />
+    </If>
+
     <!-- Tower Level 1 -->
     <!-- Tower of the Damned Level 1 -->
     <!-- Find the Sin Heart in the Heart of the Damned -->
@@ -857,13 +871,6 @@
     <!-- Also Scene ID = 120297 -->
     <If condition="IsActiveQuest(101758) and IsActiveQuestStep(41) and CurrentWorldId == 80763 and IsSceneLoaded(120300)">
       <MoveTo questId="101758" stepId="41" x="1104" y="1048" z="-68" />
-
-      <!--<SafeMoveTo questId="101758" stepId="41" pathPrecision="10" x="937" y="1165" z="10" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="10" x="1036" y="983" z="0" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="10" x="1242" y="977" z="0" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="10" x="1096" y="1250" z="-24" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="10" x="1104" y="1048" z="-68" />-->
-
       <UsePortal questId="101758" stepId="41" actorId="176001" portalMarkerHash="2083727835" isPortal="True" interactRange="20"  destinationWorldId="85201" x="1104" y="1048" z="-68" />
       <WaitTimer questId="101758" stepId="41" waitTime="1000" />
     </If>
@@ -871,19 +878,7 @@
     <!-- Start: x="1044" y="1105" z="21" (new Vector3(1044.012f,1105.141f,21.44909f)) -->
     <!-- Death restart: x="945" y="1198" z="10" (new Vector3(945.6113f,1198.71f,10.10001f)) -->
     <!-- Start Scene ID = 129725, LevelAreaId = 80792, WorldId = 80763 -->
-    <!--<If condition="IsActiveQuest(101758) and IsActiveQuestStep(41) and CurrentWorldId == 80763
-				and IsSceneLoaded(129725) and (ActorExistsAt(ZetaDia.Me.ActorSNO, 1044, 1105, 21, 100))">-->
     <If condition="IsActiveQuest(101758) and IsActiveQuestStep(41) and CurrentWorldId == 80763 and IsSceneLoaded(129725)">
-
-      <!--
-			<MoveTo questId="101758" stepId="41" x="1080" y="883" z="-112" />
-			<MoveTo questId="101758" stepId="41" x="1100" y="880" z="-104.2828" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="1027" y="885" z="-39"	/>
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="934" y="1090" z="-39" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="1089" y="1280" z="-59" />
-			<SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="1264" y="983" z="-69" />	
-			-->
-
       <SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="1044" y="892" z="-39.38912" pathPointLimit="10000" allowLongDistance="True"/>
       <SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="943" y="1090" z="-39.9" pathPointLimit="10000" allowLongDistance="True"/>
       <SafeMoveTo questId="101758" stepId="41" pathPrecision="20" x="1108" y="1275" z="-59.9" pathPointLimit="10000" allowLongDistance="True"/>
@@ -1062,7 +1057,7 @@
       <UseWaypoint questId="101758" stepId="29" waypointNumber="9" />
     </If>
 
-      <!-- Tower of the Cursed Level 1 -->
+    <!-- Tower of the Cursed Level 1 -->
     <!-- SceneId: 130304, LevelAreaId: 119653, WorldId: 119641 -->
     <If condition="IsActiveQuest(101758) and IsActiveQuestStep(29) and CurrentWorldId == 119641">
 

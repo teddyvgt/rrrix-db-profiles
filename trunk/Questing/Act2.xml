@@ -6,6 +6,8 @@
 
   <TargetBlacklists>
 
+    <TargetBlacklist actorId="83295" name="a2dun_Aqd_Act_Waterwheel_Lever_B" />
+    <TargetBlacklist actorId="131364" name="a2dun_Aqd_Special_01_Waterfall" />
     <TargetBlacklist actorId="185284" />
     <TargetBlacklist actorId="3628" />
     <TargetBlacklist actorId="214196" />
@@ -133,7 +135,7 @@
 
     <!-- Diablo 1.0.7 resume game handling -->
     <If condition="Me.IsInTown">
-      <ResumeUseTownPortal force="False" timeLimit="30" />
+      <ResumeUseTownPortal forceUsePortal="True" timeLimit="30" />
     </If>
 
     <!-- Shadows in the Desert -->
@@ -870,11 +872,13 @@
     <!-- Exploring The Forgotten Ruins -->
     <If condition="IsActiveQuest(78266) and IsActiveQuestStep(22) and CurrentWorldId == 61631">
       <TrinityExploreDungeon questId="78266" stepId="22" until="ObjectFound" actorId="213907" boxTolerance=".10" boxSize="50" />
-      <MoveToMapMarker questId="78266" stepId="22" markerNameHash="0" interactAttempts="-1" actorId="213907" />
+      <MoveToMapMarker questId="78266" stepId="24" markerNameHash="0" actorId="135248" interactRange="10.25796"
+                             pathPrecision="5" pathPointLimit="250" isPortal="True" destinationWorldId="-1" statusText="" />
+      <!--<MoveToMapMarker questId="78266" stepId="22" markerNameHash="0" interactAttempts="-1" actorId="213907" />-->
       <WaitTimer questId="78266" stepId="22" waitTime="1000" />
 
       <!-- Zoltun Kulle's Head -->
-      <MoveToActor questId="78266" stepId="22" actorId="213907" interactRange="10" />
+      <MoveToActor questId="78266" stepId="22" actorId="213907" interactRange="14" />
       <WaitTimer questId="78266" stepId="22" waitTime="1000" />
     </If>
     <!-- Try ONCE more if failed! -->
@@ -884,12 +888,12 @@
       <WaitTimer questId="78266" stepId="22" waitTime="1000" />
 
       <!-- Zoltun Kulle's Head -->
-      <MoveToActor questId="78266" stepId="22" actorId="213907" interactRange="10" />
+      <MoveToActor questId="78266" stepId="22" actorId="213907" interactRange="14" />
       <WaitTimer questId="78266" stepId="22" waitTime="1000" />
     </If>
     <If condition="IsActiveQuest(78266) and IsActiveQuestStep(24) and CurrentWorldId == 61631">
       <MoveToMapMarker questId="78266" stepId="24" markerNameHash="0" />
-      <UseObject questId="78266" stepId="24" actorId="213907" interactRange="10" />
+      <UseObject questId="78266" stepId="24" actorId="213907" interactRange="14" />
       <WaitTimer questId="78266" stepId="24" waitTime="1000" statusText="WaitTimer: We should have just picked up Zoltun's head" />
     </If>
     <While condition="IsActiveQuest(78266) and IsActiveQuestStep(26) and CurrentWorldId == 61631 and ActorExistsAt(164502, Me.Position.X, Me.Position.Y, Me.Position.Z, 300)">
@@ -1459,11 +1463,6 @@
       <MoveToMapMarker questId="57335" stepId="24" markerNameHash="-1758560943" actorId="185067" isPortal="True" />
     </If>
 
-
-
-
-
-
     <If condition="IsActiveQuest(57335) and IsActiveQuestStep(24) and CurrentWorldId == 123183">
       <!-- Vault of the Assassin Attempt #1 -->
       <!-- Search for Blood of Zoltun Kulle -->
@@ -1534,6 +1533,7 @@
     <If condition="IsActiveQuest(57335) and IsActiveQuestStep(24) and CurrentWorldId == 123183">
       <UseTownPortal questId="57335" stepId="24" />
     </If>
+
     <!-- Use WP to Desolate Sands -->
     <If condition="IsActiveQuest(57335) and IsActiveQuestStep(24) and Me.IsInTown">
       <UseWaypoint questId="57335" stepId="24" waypointNumber="8" />

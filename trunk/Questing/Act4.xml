@@ -49,7 +49,7 @@
 
     <!-- Diablo 1.0.7 resume game handling -->
     <If condition="Me.IsInTown">
-      <ResumeUseTownPortal force="False" timeLimit="30" />
+      <ResumeUseTownPortal forceUsePortal="True" timeLimit="30" />
     </If>
 
 

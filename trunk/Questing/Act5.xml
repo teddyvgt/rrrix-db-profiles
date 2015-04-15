@@ -32,9 +32,8 @@
 
     <!-- Diablo 1.0.7 resume game handling -->
     <If condition="Me.IsInTown">
-      <ResumeUseTownPortal force="False" timeLimit="30" />
+      <ResumeUseTownPortal forceUsePortal="True" timeLimit="30" />
     </If>
-
 
     <!-- Quest: x1_WestM_IntroQuest World: X1_Westmarch_Overlook_D LevelArea: x1_westm_intro_overlook -->
     <If condition="IsActiveQuest(251355) and IsActiveQuestStep(-1) and CurrentWorldId==308705 and CurrentLevelAreaId==284069">
