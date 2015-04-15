@@ -66,14 +66,18 @@
 
     <!-- Diablo 1.0.7 resume game handling -->
     <If condition="Me.IsInTown">
-      <ResumeUseTownPortal force="False" timeLimit="30" />
+      <ResumeUseTownPortal forceUsePortal="True" timeLimit="30" />
     </If>
 
     <If condition="IsActiveQuest(87700) and IsActiveQuestStep(-1) and CurrentWorldId == 71150">
       <!-- The Fallen Star -->
       <SafeMoveTo questId="87700" stepId="-1" actorId="3739" x="2837" y="2931" z="24" />
+    
       <!-- Pickup the quest from Captain Rumford -->
       <MoveToActor questId="87700" stepId="-1" actorId="3739" x="2837" y="2931" z="24" />
+      
+      <MoveToActor questId="87700" stepId="-1" x="2840" y="2910" z="24"  actorId="3739" interactRange="7"  pathPrecision="5" pathPointLimit="250" statusText="" />
+      
       <WaitTimer questId="87700" stepId="-1" waitTime="1000" />
     </If>
     <While condition="IsActiveQuest(87700) and IsActiveQuestStep(66) and CurrentWorldId == 71150">
@@ -1606,6 +1610,11 @@
       <!-- Go into Leoric's Manor -->
       <MoveToActor questId="72546" stepId="51" actorId="176001" isPortal="True" destinationWorldId="75049" x="1081" y="3381" z="65" />
       <WaitTimer questId="72546" stepId="51" waitTime="1000" />
+    </If>
+    <!-- Quest: CainExit (72546) World: [sno unknown] (71150) LevelArea: A1_trOUT_NewTristram (19947) -->
+    <!-- Resume game handling -->
+    <If condition="IsActiveQuest(72546) and IsActiveQuestStep(34) and CurrentWorldId==71150 and CurrentLevelAreaId==19947">
+      <UseWaypoint questId="72546" stepId="34" waypointNumber="12" name="Waypoint-6968" statusText="" />
     </If>
     <If condition="IsActiveQuest(72546) and IsActiveQuestStep(34) and CurrentWorldId == 71150">
       <!-- Go into Leoric's Manor - new game /resume handling -->
