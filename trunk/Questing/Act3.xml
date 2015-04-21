@@ -1056,7 +1056,10 @@
     <If condition="IsActiveQuest(101758) and IsActiveQuestStep(29) and ZetaDia.IsInTown">
       <UseWaypoint questId="101758" stepId="29" waypointNumber="9" />
     </If>
-
+    <!-- Quest: KillAzmodan (101758) World: a3Dun_Crater_Level_02 (81934) LevelArea: A3_Dun_Crater_Level_02 (119305) -->
+    <If condition="IsActiveQuest(101758) and IsActiveQuestStep(29) and CurrentWorldId==81934 and CurrentLevelAreaId==119305">
+      <UseWaypoint questId="101758" stepId="29" waypointNumber="9" />
+    </If>
     <!-- Tower of the Cursed Level 1 -->
     <!-- SceneId: 130304, LevelAreaId: 119653, WorldId: 119641 -->
     <If condition="IsActiveQuest(101758) and IsActiveQuestStep(29) and CurrentWorldId == 119641">
