@@ -65,7 +65,7 @@
     </If>
 
     <!-- Diablo 1.0.7 resume game handling -->
-    <If condition="Me.IsInTown">
+    <If condition="Me.IsInTown and not (IsActiveQuestAndStep(72095,32) or IsActiveQuestAndStep(72061,54))">
       <ResumeUseTownPortal forceUsePortal="True" timeLimit="30" />
     </If>
 
