@@ -68,6 +68,11 @@
       <!--<WaitTimer questId="1" waitTime="25000" />-->
     </If>
 
+    <!-- Rift Quest Complete -->
+    <If condition="QuestComplete(337492)">
+      <TownRun minFreeBagSlots="59" minDurabilityPercent="99" />
+    </If>
+
     <!-- In Town, Rift Portal Open, Take Return Portal -->
     <!-- Quest: X1_LR_DungeonFinder (337492) World: X1_Westmarch_Hub (304235) LevelArea: x1_Westm_Hub (270011) -->
     <If condition="(IsActiveQuestAndStep(337492,13) or IsActiveQuestAndStep(337492,1)) and Me.IsInTown and ActorExistsAt(191492, 545, 753, 3, 50)">
@@ -431,14 +436,15 @@
     <TrinityTownPortal questId="337492" stepId="10" waitTime="5000" />
 
     <If condition="Me.IsInTown and IsActiveQuestAndStep(337492,10)">
+      <LogMessage output="Finishing Rift - talking with Orek" />
       <!-- Speak to Orek -->
-      <MoveToActor questId="337492" stepId="10" x="594" y="764" z="3" actorId="363744" interactRange="9" name="X1_LR_Nephalem-21212"  pathPrecision="5" pathPointLimit="250" statusText=""
+      <MoveToActor questId="337492" stepId="10" x="594" y="764" z="3" actorId="363744" interactRange="9" 
+                   name="X1_LR_Nephalem-21212"  pathPrecision="5" pathPointLimit="250" statusText=""
                    exitWithConversation="True" exitWithVendorWindow="True"/>
 
       <!-- Leave Game Option -->
       <!--<LeaveGame questId="337492" stepId="-1" reason="Run is done" />-->
 
-      <TownRun minFreeBagSlots="60" minDurabilityPercent="100" />
 
       <!-- Wait 30 sec, then re-recreate! -->
       <!--<WaitTimer questId="1" waitTime="27000" />-->
